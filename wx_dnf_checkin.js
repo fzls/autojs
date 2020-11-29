@@ -1,5 +1,5 @@
 // 微信dnf签到活动自动化脚本
-var common = require("autojs/_common.js")
+var common = require("_common.js")
 
 common.init()
 

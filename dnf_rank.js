@@ -1,5 +1,5 @@
 // dnf助手排行榜活动自动化获取鲜花脚本
-var common = require("autojs/_common.js")
+var common = require("_common.js")
 
 common.init()
 
