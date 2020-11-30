@@ -33,5 +33,13 @@ module.exports = {
         // 双击back，退出当前应用
         back()
         back()
+    },
+
+    // 退出到最顶层
+    back_to_top: function (maxLevel, waitMillSeconds) {
+        for (let i = 0; i < maxLevel; i++) {
+            back()
+            sleep(waitMillSeconds)
+        }
     }
 }
