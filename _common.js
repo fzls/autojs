@@ -1,7 +1,7 @@
 module.exports = {
     // 通用等待逻辑
     sleep_default: function () {
-        sleep(3000)
+        sleep(5000)
     },
 
     // 在命令行和toast输出日志
