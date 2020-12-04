@@ -5,6 +5,9 @@ module.exports = {
     sleep_default: function () {
         sleep(5000)
     },
+    sleep_long: function () {
+        sleep(8000)
+    },
 
     // 在命令行和toast输出日志
     log: function log(msg) {
