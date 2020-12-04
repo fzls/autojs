@@ -1,7 +1,6 @@
-// 微信dnf签到活动自动化脚本
 var common = require("_common.js")
 
-common.init()
+common.init("微信dnf签到活动自动化脚本")
 
 common.log("打开微信")
 launchApp("微信")

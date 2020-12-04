@@ -1,22 +1,11 @@
 // auto.js参考文档：https://hyb1996.github.io/AutoJs-Docs/
 
 module.exports = {
-    // 通用等待逻辑
-    sleep_default: function () {
-        sleep(5000)
-    },
-    sleep_long: function () {
-        sleep(8000)
-    },
-
-    // 在命令行和toast输出日志
-    log: function log(msg) {
-        console.info(msg)
-        toast(msg)
-    },
-
     // 所有辅助脚本初始化的操作
-    init: function () {
+    init: function (operationName) {
+        this.log(operationName)
+        sleep(1000)
+
         // 确保无障碍服务已启用
         auto.waitFor()
 
@@ -24,12 +13,8 @@ module.exports = {
         if (!device.isScreenOn()) {
             device.wakeUp()
             sleep(1000)
-            //下拉状态栏
-            swipe(500, 30, 500, 1000, 300)
-            sleep(1000)
-            //点击时间
-            click(250, 230)
-            sleep(2000)
+            this.swipe("下拉状态栏", 500, 30, 500, 1000, 300)
+            this.click("点击时间", 250, 230)
         }
     },
 
@@ -40,11 +25,59 @@ module.exports = {
         back()
     },
 
+    // -- 对常用函数的一些封装 --
+    launchPackage: function (msg, packageName) {
+        this.log(msg)
+        launchPackage(packageName)
+        this.sleep_long()
+    },
+    click: function (msg, x, y) {
+        this.log(msg)
+        click(x, y)
+        this.sleep_default()
+    },
+    swipe: function (msg, x1, y1, x2, y2, duration) {
+        this.log(msg)
+        swipe(x1, y1, x2, y2, duration)
+        this.sleep_default()
+    },
+
     // 退出到最顶层
-    back_to_top: function (maxLevel, waitMillSeconds) {
+    back_to_top: function (msg, maxLevel, waitMillSeconds) {
+        this.log(msg)
         for (let i = 0; i < maxLevel; i++) {
             back()
             sleep(waitMillSeconds)
         }
-    }
+    },
+    back: function () {
+        this.log("回到上一层")
+        back()
+        this.sleep_default()
+    },
+
+    // -- 一些辅助函数 --
+
+    headline: function (msg) {
+        sideMsg = "--"
+        this.log(sideMsg + " " + msg + " " + sideMsg)
+    },
+
+    foot: function () {
+        this.log("操作完成，请看看是否ok")
+    },
+
+    // 在命令行和toast输出日志
+    log: function log(msg) {
+        console.info(msg)
+        toast(msg)
+    },
+
+    // 通用等待逻辑
+    sleep_default: function () {
+        sleep(5000)
+    },
+    sleep_long: function () {
+        sleep(8000)
+    },
 }
