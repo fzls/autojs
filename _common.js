@@ -31,14 +31,15 @@ module.exports = {
         launchPackage(packageName)
         this.sleep_long()
     },
-    click: function (msg, x, y, longSleep = false) {
+    click: function (msg, x, y) {
         this.log(msg)
         click(x, y)
-        if (longSleep) {
-            this.sleep_long()
-        } else {
-            this.sleep_default()
-        }
+        this.sleep_default()
+    },
+    click_sleep_long: function (msg, x, y) {
+        this.log(msg)
+        click(x, y)
+        this.sleep_long()
     },
     double_click: function (msg, x, y) {
         this.log(msg)
@@ -60,8 +61,8 @@ module.exports = {
             sleep(waitMillSeconds)
         }
     },
-    back: function (msg="回到上一层") {
-        this.log(msg)
+    back: function () {
+        this.log("回到上一层")
         back()
         this.sleep_default()
     },
