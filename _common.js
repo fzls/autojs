@@ -19,7 +19,8 @@ module.exports = {
     },
 
     // 双击退出当前应用
-    exit_current_app: function () {
+    exit_current_app: function (msg) {
+        this.log(msg)
         // 双击back，退出当前应用
         back()
         back()
