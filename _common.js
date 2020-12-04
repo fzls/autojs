@@ -88,6 +88,10 @@ module.exports = {
     sleep_default: function () {
         sleep(5000)
     },
+    sleep_default_with_msg: function (msg) {
+        this.log(msg)
+        this.sleep_default()
+    },
     sleep_long: function () {
         sleep(8000)
     },
