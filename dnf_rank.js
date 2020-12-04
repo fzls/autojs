@@ -1,4 +1,4 @@
-// dnf助手排行榜活动自动化获取鲜花脚本
+// dnf助手排行榜活动自动化完成获取鲜花任务以及编年史相关任务脚本
 var common = require("_common.js")
 
 common.init()
