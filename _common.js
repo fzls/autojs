@@ -3,7 +3,7 @@
 module.exports = {
     // 所有辅助脚本初始化的操作
     init: function (operationName) {
-        this.log(operationName)
+        this.log("即将开始运行 " + operationName)
         this.sleep_default()
 
         // 确保无障碍服务已启用
