@@ -4,7 +4,7 @@ module.exports = {
     // 所有辅助脚本初始化的操作
     init: function (operationName) {
         this.log(operationName)
-        sleep(1000)
+        this.sleep_default()
 
         // 确保无障碍服务已启用
         auto.waitFor()
