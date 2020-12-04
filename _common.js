@@ -1,3 +1,5 @@
+// auto.js参考文档：https://hyb1996.github.io/AutoJs-Docs/
+
 module.exports = {
     // 通用等待逻辑
     sleep_default: function () {
