@@ -31,7 +31,7 @@ for (let i = 0; i < remainingLotteryCount; i++) {
 }
 common.back()
 
-common.headline("理财礼卡请通过小助手进行完成~")
+common.headline("理财礼卡已经下线，没必要搞了-。-")
 // common.click("点击 [理财礼卡] 区域", 950, 1900)
 // common.swipe("上滑直至[四个礼包]内容居中", 540, 1600, 540, 1100, 1000)
 // common.click("点击 [600G分购买] 升级版月卡", 750, 1777)
