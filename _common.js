@@ -87,6 +87,10 @@ module.exports = {
     },
 
     // 通用等待逻辑
+    sleep: function (msg, seconds) {
+        this.log(msg)
+        sleep(seconds * 1000)
+    },
     sleep_default: function () {
         sleep(5000)
     },
