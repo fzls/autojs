@@ -45,7 +45,62 @@ common.click("点击 [游戏礼包] 区域", 200, 800)
 common.click("点击 [复活币*5] 右侧的兑换按钮", 930, 1060)
 common.click("点击 [确认兑换] 按钮", 760, 1430)
 common.click("点击 [确认] 按钮", 550, 1360)
+common.back()
 
-common.back_to_top("返回首页", 2, 3000)
+common.headline("心悦猫咪")
+common.click("点击 [心悦猫咪] 区域", 525, 910)
+common.sleep_long()
+let infoListView = className("android.widget.ListView").depth(11).rowCount(3).findOne()
+let gPoints = parseInt(infoListView.child(0).text(), 10)
+let fightingCapacity = parseInt(infoListView.child(1).text(), 10)
+let yuanQi = parseInt(infoListView.child(2).text(), 10)
+
+let totalFightCount = Math.floor(yuanQi / 20)
+common.headline("将进行战斗次数为：" + totalFightCount)
+if (totalFightCount > 0) {
+    let fightUsingTime = 10
+
+    common.click("点击 [战斗] 按钮，触发首次战斗", 420, 1725)
+    common.sleep("等待猫咪战斗结束", fightUsingTime)
+
+    for (let i = 2; i <= totalFightCount; i++) {
+        common.click("点击 [我还能打] 按钮，触发第" + i + "次战斗", 710, 1350)
+        common.sleep("等待猫咪战斗结束", fightUsingTime)
+    }
+
+    common.click("点击 [不了怕了] 按钮", 370, 1350)
+} else {
+    common.sleep_default_with_msg("元气不足20，无法进行战斗")
+}
+
+common.headline("历练")
+if (fightingCapacity >= 15) {
+    common.click("点击 [历练] 按钮", 170, 1725)
+    let levelPos = {x: 850, y: 1750}
+    if (15 <= fightingCapacity && fightingCapacity < 55) {
+        // 关卡1
+        levelPos.x = 850
+        levelPos.y = 1750
+    } else if (55 <= fightingCapacity && fightingCapacity < 90) {
+        // 关卡1
+        levelPos.x = 250
+        levelPos.y = 1200
+    } else if (15 <= fightingCapacity && fightingCapacity < 55) {
+        // 关卡1
+        levelPos.x = 875
+        levelPos.y = 900
+    } else if (15 <= fightingCapacity && fightingCapacity < 55) {
+        // 关卡1
+        levelPos.x = 500
+        levelPos.y = 575
+    }
+    common.click("点击 [当前能打的最高关卡] 按钮", levelPos.x, levelPos.y)
+    common.click("点击 [去吧] 按钮", 700, 1500)
+} else {
+    common.sleep_default_with_msg("战力不足15，无法进行历练~")
+}
+common.back()
+
+common.back()
 
 common.foot()
