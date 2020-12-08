@@ -73,6 +73,7 @@ module.exports = {
     headline: function (msg) {
         sideMsg = "--"
         this.log(sideMsg + " " + msg + " " + sideMsg)
+        this.sleep_default()
     },
 
     foot: function () {
