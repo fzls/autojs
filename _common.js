@@ -84,6 +84,8 @@ module.exports = {
 
     foot: function () {
         this.log("操作完成，请看看是否ok")
+        this.sleep_default_with_msg("三秒后将锁屏~")
+        KeyCode("KEYCODE_POWER");
     },
 
     // 在命令行和toast输出日志
