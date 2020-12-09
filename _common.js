@@ -49,6 +49,11 @@ module.exports = {
         click(x, y)
         this.sleep_default()
     },
+    click_text: function (msg, textToClick) {
+        this.log(msg)
+        click(textToClick, 0)
+        this.sleep_default()
+    },
     swipe: function (msg, x1, y1, x2, y2, duration) {
         this.log(msg)
         swipe(x1, y1, x2, y2, duration)
