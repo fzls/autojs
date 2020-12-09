@@ -48,8 +48,16 @@ common.click("点击 [确认] 按钮", 550, 1360)
 common.back()
 
 common.headline("心悦猫咪")
+common.headline("领取历练奖励")
 common.click("点击 [心悦猫咪] 区域", 525, 910)
-common.sleep_long()
+common.sleep("加载很慢，多等一段时间", 25)
+common.click("点击 [领取礼包] 按钮", 170, 1725)
+common.click("点击 [好的] 按钮", 550, 1380)
+common.back()
+
+common.headline("战斗与历练")
+common.click("点击 [心悦猫咪] 区域", 525, 910)
+common.sleep("加载很慢，多等一段时间", 25)
 let infoListView = className("android.widget.ListView").depth(11).rowCount(3).findOne()
 let gPoints = parseInt(infoListView.child(0).text(), 10)
 let fightingCapacity = parseInt(infoListView.child(1).text(), 10)
@@ -58,7 +66,7 @@ let yuanQi = parseInt(infoListView.child(2).text(), 10)
 let totalFightCount = Math.floor(yuanQi / 20)
 common.headline("将进行战斗次数为：" + totalFightCount)
 if (totalFightCount > 0) {
-    let fightUsingTime = 10
+    let fightUsingTime = 15
 
     common.click("点击 [战斗] 按钮，触发首次战斗", 420, 1725)
     common.sleep("等待猫咪战斗结束", fightUsingTime)
