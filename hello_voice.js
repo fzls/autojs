@@ -3,7 +3,6 @@ var common = require("_common.js")
 common.init("hello语音dnf活动自动化脚本")
 
 common.launchPackage("打开hello语音", "com.yy.huanju")
-common.sleep_default_with_msg("额外等待一会，防止有开屏活动弹出")
 common.click("处理可能弹出的开屏活动页", 935, 420)
 common.click("处理首次登录会弹出的签到按钮", 540, 1425)
 common.back_to_top("按多次back，确保跳到最顶层", 5, 3000)

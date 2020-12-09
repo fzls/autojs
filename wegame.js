@@ -3,7 +3,6 @@ var common = require("_common.js")
 common.init("掌上WeGame 每日签到与明日宝藏脚本")
 
 common.launchPackage("打开掌上WeGame", "com.tencent.tgp")
-common.sleep_default()
 common.click("点击 [首页] tab以跳过开屏推送", 135, 2080)
 
 common.headline("进入福利中心进行自动签到")

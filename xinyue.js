@@ -3,7 +3,6 @@ var common = require("_common.js")
 common.init("心悦app G分脚本")
 
 common.launchPackage("打开心悦app", "com.tencent.tgclub")
-common.sleep_long()
 common.click("点击 [屏幕中央] 以进入可能存在的开屏推送", 500, 1400)
 common.back()
 
