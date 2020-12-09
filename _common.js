@@ -31,6 +31,7 @@ module.exports = {
         this.log(msg)
         launchPackage(packageName)
         this.sleep_long()
+        this.sleep("额外等待一会", 12)
     },
     click: function (msg, x, y) {
         this.log(msg)
