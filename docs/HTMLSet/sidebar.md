@@ -1,0 +1,4 @@
+- **入门**
+- [程序简介](./README.md)
+- [使用教程](https://hyb1996.github.io/AutoJs-Docs/#/)
+- [B站教程](https://space.bilibili.com/1851177)
