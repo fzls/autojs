@@ -21,9 +21,7 @@ common.back()
 
 common.headline("明日宝藏")
 common.click("点击 [明日宝藏] 图标", 1070, 835)
-common.headline("参与领取昨日参与的宝藏")
-// re：需要等周三看看实际是什么样子再实现这个
-common.sleep_default_with_msg("TODO：需要等周三看看实际是什么样子再实现这个")
+common.headline("进入后将自动领取昨日参与的宝箱，将在明天自动开启~")
 common.headline("参与明日的宝藏")
 common.click("点击 [我要参加] 按钮", 790, 1420)
 // 通过我的积分来向上跳三层找到表格组件
