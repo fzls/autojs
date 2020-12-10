@@ -35,7 +35,7 @@ common.click_text("点击 [领取奖励] 聊天记录", "领取奖励")
 // 为了保险起见，多点几次
 for (let i = 0; i < 3; i++) {
     common.click("第" + i + "次点击 [领取奖励] 按钮", 535, 1570)
-    common.click("第" + i + "次点击 [确定] 按钮", 535, 1235)
+    common.click("第" + i + "次点击 [确定] 按钮", 400, 1235)
 }
 common.back()
 
