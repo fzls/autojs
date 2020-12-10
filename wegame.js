@@ -10,13 +10,13 @@ common.click("点击 [首页] tab", 135, 2080)
 common.click("点击 [福利中心] 图标", 1015, 130)
 common.sleep_default_with_msg("签到信息：" + id("tv_sign_result").findOne().text())
 
-// 获取banner view
+// 获取banner view，进而获取y轴信息
 let bannerRecycleView = className("androidx.recyclerview.widget.RecyclerView").id("recyclerview_pm_banner").findOne()
+let bannerY = bannerRecycleView.bounds().centerY()
+common.sleep_default_with_msg("bannerY=" + bannerY)
 
 common.headline("限时兑换1-5Q币")
-let limitedTimeRedemptionView = bannerRecycleView.child(0)
-limitedTimeRedemptionView.click()
-common.sleep_default_with_msg("点击 [限时兑换] 图标")
+common.click("点击 [限时兑换] 图标", 200, bannerY)
 common.sleep_default()
 common.click("点击 [300积分兑换] 1Q币", 800, 725)
 common.click("点击 [确定] 按钮", 540, 1320)
@@ -25,9 +25,10 @@ common.click("点击 [确定] 按钮", 540, 1320)
 common.back()
 
 common.headline("明日宝藏")
-let tomorrowTreasureView = bannerRecycleView.child(3)
-tomorrowTreasureView.click()
-common.sleep_default_with_msg("点击 [明日宝藏] 图标")
+for (let i = 0; i < 2; i++){
+    common.swipe("左滑直至[明日宝藏] 出现在最右侧（假设最右边是明日宝藏", 1000, bannerY, 100, bannerY, 1000)
+}
+common.click("点击 [明日宝藏] 图标", 880, bannerY)
 common.headline("进入后将自动领取昨日参与的宝箱，将在明天自动开启~")
 common.headline("参与明日的宝藏")
 common.click("点击 [我要参加] 按钮(无昨日宝箱)", 700, 1420)
