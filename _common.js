@@ -3,7 +3,7 @@
 module.exports = {
     // 所有辅助脚本初始化的操作
     init: function (operationName) {
-        this.sleep_default()
+        this.log("准备解锁屏幕~")
 
         // 确保无障碍服务已启用
         auto.waitFor()
@@ -16,7 +16,7 @@ module.exports = {
             this.click("点击时间", 250, 230)
         }
         
-        this.log("即将开始运行 " + operationName)
+        this.sleep_default_with_msg("即将开始运行 " + operationName)
     },
 
     // 双击退出当前应用
