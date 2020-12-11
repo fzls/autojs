@@ -3,6 +3,8 @@
 module.exports = {
     // 所有辅助脚本初始化的操作
     init: function (operationName) {
+        // 当前所有脚本中的坐标都是基于小米 MIX 2（2160 X 1080）的屏幕适配，通过调用该函数，可实现在其他分辨率的设备上自动进行坐标缩放
+        setScreenMetrics(1080, 2160)
         this.log("准备解锁屏幕~")
 
         // 确保无障碍服务已启用
