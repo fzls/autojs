@@ -12,7 +12,7 @@ module.exports = {
         if (!device.isScreenOn()) {
             device.wakeUp()
             sleep(1000)
-            this.swipe("下拉状态栏", 500, 30, 500, 1000, 300)
+            this.swipe("下拉状态栏", 180, 200, 180, 1200, 300)
             this.click("点击时间", 250, 230)
         }
         
