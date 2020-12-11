@@ -25,8 +25,8 @@ common.click("点击 [确定] 按钮", 540, 1320)
 common.back()
 
 common.headline("明日宝藏")
-for (let i = 0; i < 2; i++){
-    common.swipe("左滑直至[明日宝藏] 出现在最右侧（假设最右边是明日宝藏", 1000, bannerY, 100, bannerY, 1000)
+for (let i = 0; i < 5; i++) {
+    common.swipe("第" + (i + 1) + "次左滑直至[明日宝藏] 出现在最右侧（假设最右边是明日宝藏", 1000, bannerY, 100, bannerY, 1000)
 }
 common.click("点击 [明日宝藏] 图标", 880, bannerY)
 common.headline("进入后将自动领取昨日参与的宝箱，将在明天自动开启~")
