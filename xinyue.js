@@ -161,6 +161,62 @@ function locateItemAndTryBuyIt(targetName, nameToIconTextMap) {
 
 common.back()
 
+common.headline("穿戴妆容和装饰")
+common.click("点击 [心悦猫咪] 区域", 525, 910)
+common.sleep("加载很慢，多等一段时间", 25)
+common.click("点击 [仓库] 按钮", 990, 815)
+
+common.click("点击 [装饰] 按钮", 790, 390)
+locateItemAndTryUseIt("小橘子", decorationMap)
+
+common.click("点击 [妆容] 按钮", 290, 390)
+locateItemAndTryUseIt("贤德昭仪", makeupMap)
+
+function locateItemAndTryUseIt(targetName, nameToIconTextMap) {
+    iconText = nameToIconTextMap[targetName]
+    let returnBtnView = className("android.view.View").text("返回按钮").findOne()
+    let itemList = returnBtnView.parent().child(3).child(0).child(0)
+    let found = false
+    for (let i = 0; i < itemList.childCount(); i++) {
+        item = itemList.child(i)
+
+        let imageView = item.child(0)
+        let image_icon = imageView.child(imageView.childCount() - 1).child(0).text()
+        if (image_icon !== iconText) {
+            continue
+        }
+
+        // 已穿戴|穿戴
+        // 已装饰|装饰
+        let statusBtn =item.child(1)
+        let status = statusBtn.text()
+        if (status === "穿戴" || status === "装饰") {
+            // 点击穿戴/装饰
+            statusBtn.click()
+            common.sleep_default_with_msg("尚未" + status + targetName + "，点击 " + status + " 按钮进行" + status)
+
+
+            let useBtnView = returnBtnView.parent().child(4).child(0).child(1).child(2)
+            common.click("点击" + status + targetName, useBtnView.bounds().centerX(), useBtnView.bounds().centerY())
+
+            let closeBtnView = useBtnView.parent().parent().child(0)
+            common.click(status + "完成，点击右上角关闭按钮", closeBtnView.bounds().centerX(), closeBtnView.bounds().centerY())
+        } else {
+            common.sleep_default_with_msg(status + targetName + "，本次无需额外操作~")
+        }
+
+        // 找到目标后停止处理
+        found = true
+        break
+    }
+
+    if (!found) {
+        common.sleep_default_with_msg("未能找到 " + targetName + "，应该是尚未购买~")
+    }
+}
+
+common.back()
+
 common.headline("战斗与历练")
 common.click("点击 [心悦猫咪] 区域", 525, 910)
 common.sleep("加载很慢，多等一段时间", 25)
