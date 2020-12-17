@@ -77,6 +77,30 @@ common.headline("尝试购买妆容和装饰")
 common.click("点击 [心悦猫咪] 区域", 525, 910)
 common.sleep("加载很慢，多等一段时间", 25)
 common.click("点击 [商店] 按钮", 910, 1725)
+
+// 小橘子的七日收益率较高，故而先尝试购买小橘子
+// 成本    300
+// 收益    30*2*7=420
+// 净利润  120
+// 收益率  120/300 = 40%
+common.click("点击 [装饰] 按钮", 790, 390)
+decorationMap = {
+    "云裳童心饰": "icon-06",
+    "云裳茶壶": "icon-05",
+    "飞车酷比": "icon-01",
+    "飞车墨汁": "icon-02",
+    "炫舞粉66": "icon-03",
+    "炫舞酷66": "icon-04",
+    "小橘子": "icon-07",
+    "喷香猫粮": "icon-00",
+}
+locateItemAndTryBuyIt("小橘子", decorationMap)
+
+// 贤德昭仪的七日收益率较低，故而在后面买
+// 成本    600
+// 收益    50*2*7=700
+// 净利润  100
+// 收益率  100/600 = 16.66%
 common.click("点击 [妆容] 按钮", 290, 390)
 makeupMap = {
     "Carry猫": "icon-23",
@@ -90,19 +114,6 @@ makeupMap = {
 }
 common.sleep_default_with_msg("目前G分不太够，先不购买600G分的贤德昭仪。等G分超过1000的时候来弄下这个~")
 // locateItemAndTryBuyIt( "贤德昭仪", makeupMap)
-
-common.click("点击 [装饰] 按钮", 790, 390)
-decorationMap = {
-    "云裳童心饰": "icon-06",
-    "云裳茶壶": "icon-05",
-    "飞车酷比": "icon-01",
-    "飞车墨汁": "icon-02",
-    "炫舞粉66": "icon-03",
-    "炫舞酷66": "icon-04",
-    "小橘子": "icon-07",
-    "喷香猫粮": "icon-00",
-}
-locateItemAndTryBuyIt("小橘子", decorationMap)
 
 function locateItemAndTryBuyIt(targetName, nameToIconTextMap) {
     iconText = nameToIconTextMap[targetName]
