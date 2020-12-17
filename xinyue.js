@@ -30,13 +30,15 @@ for (let i = 0; i < remainingLotteryCount; i++) {
 }
 common.back()
 
-common.headline("理财礼卡已经下线，没必要搞了-。-")
+common.headline("理财礼卡已经在小助手中实现，这里将直接跳过~")
+// common.headline("理财礼卡")
 // common.click("点击 [理财礼卡] 区域", 950, 1900)
 // common.swipe("上滑直至[四个礼包]内容居中", 540, 1600, 540, 1100, 1000)
 // common.click("点击 [600G分购买] 升级版月卡", 750, 1777)
 // common.click("点击 [确认购买] 升级版月卡", 350, 1250)
-// common.click("点击 [300G分购买] 体验版月卡", xxxxxxxx, yyyyyyy)
-// common.click("点击 [确认购买] 体验版月卡", xxxxxxxx, yyyyyyy)
+// common.click("点击 [确认]", 550, 1435)
+// common.click("点击 [确认购买] 升级版月卡", 350, 1250)
+// common.click("点击 [确认]", 550, 1435)
 
 common.headline("游戏礼包")
 common.swipe("下滑直至[游戏礼包]内容完全展现", 540, 500, 540, 2100, 1000)
