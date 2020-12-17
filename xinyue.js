@@ -85,14 +85,14 @@ common.click("点击 [商店] 按钮", 910, 1725)
 // 收益率  120/300 = 40%
 common.click("点击 [装饰] 按钮", 790, 390)
 decorationMap = {
-    "云裳童心饰": "icon-06",
-    "云裳茶壶": "icon-05",
+    "喷香猫粮": "icon-00",
     "飞车酷比": "icon-01",
     "飞车墨汁": "icon-02",
     "炫舞粉66": "icon-03",
     "炫舞酷66": "icon-04",
+    "云裳茶壶": "icon-05",
+    "云裳童心饰": "icon-06",
     "小橘子": "icon-07",
-    "喷香猫粮": "icon-00",
 }
 locateItemAndTryBuyIt("小橘子", decorationMap)
 
@@ -103,14 +103,27 @@ locateItemAndTryBuyIt("小橘子", decorationMap)
 // 收益率  100/600 = 16.66%
 common.click("点击 [妆容] 按钮", 290, 390)
 makeupMap = {
-    "Carry猫": "icon-23",
-    "雪豹战士": "icon-20",
-    "贤德昭仪": "icon-09",
-    "月半半": "icon-17",
-    "屠龙勇士": "icon-13",
-    "杰克国王": "icon-08",
-    "浪子刀客": "icon-03",
+    "富贵士绅": "icon-01",
     "加班女仆": "icon-02",
+    "浪子刀客": "icon-03",
+    "世家公子": "icon-04",
+    "偶像歌手": "icon-05",
+    "煮饭仙人": "icon-06",
+    "古玩大亨": "icon-07",
+    "杰克国王": "icon-08",
+    "贤德昭仪": "icon-09",
+    "名射击手": "icon-11",
+    "尾灯少女": "icon-12",
+    "屠龙勇士": "icon-13",
+    "赤子仙童": "icon-14",
+    "鸾舞佳人": "icon-15",
+    "王牌地主": "icon-16",
+    "月半半": "icon-17",
+    "魔力娃娃": "icon-18",
+    "雪豹战士": "icon-20",
+    "沉甸甸": "icon-21",
+    "节奏大师": "icon-22",
+    "Carry猫": "icon-23",
 }
 common.sleep_default_with_msg("目前G分不太够，先不购买600G分的贤德昭仪。等G分超过1000的时候来弄下这个~")
 // locateItemAndTryBuyIt( "贤德昭仪", makeupMap)
