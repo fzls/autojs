@@ -49,8 +49,8 @@ common.sleep_default_with_msg("当前G分为" + currentGPoints)
 
 common.click("点击 [游戏礼包] 区域", 200, 800)
 
-// 只有在G分不低于600（妆容-贤德昭仪）+300（装饰-小橘子）+本次兑换所需G分时，才尝试进行本次的兑换
-let needLeftAtLeast = 600 + 300
+// 只有在G分不低于600（妆容-贤德昭仪）+300（装饰-小橘子）+600（理财礼卡-升级版月卡）+300（理财礼卡-体验版月卡）+本次兑换所需G分时，才尝试进行本次的兑换
+let needLeftAtLeast = 600 + 300 + 600 + 300
 if (currentGPoints >= needLeftAtLeast + 44) {
     let exchangeFuHuoCoinButton = className("android.widget.TextView").textContains("复活币*5").findOne().parent().parent().child(2)
     let buttonY = exchangeFuHuoCoinButton.bounds().centerY()
