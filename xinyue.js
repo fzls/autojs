@@ -51,11 +51,76 @@ common.click("点击 [确认] 按钮", 550, 1360)
 common.back()
 
 common.headline("心悦猫咪")
+
 common.headline("领取历练奖励")
 common.click("点击 [心悦猫咪] 区域", 525, 910)
 common.sleep("加载很慢，多等一段时间", 25)
 common.click("点击 [领取礼包] 按钮", 170, 1725)
 common.click("点击 [好的] 按钮", 550, 1380)
+common.back()
+
+common.headline("尝试购买妆容和装饰")
+common.click("点击 [心悦猫咪] 区域", 525, 910)
+common.sleep("加载很慢，多等一段时间", 25)
+common.click("点击 [商店] 按钮", 910, 1725)
+common.click("点击 [妆容] 按钮", 290, 390)
+makeupMap = {
+    "Carry猫": "icon-23",
+    "雪豹战士": "icon-20",
+    "贤德昭仪": "icon-09",
+    "月半半": "icon-17",
+    "屠龙勇士": "icon-13",
+    "杰克国王": "icon-08",
+    "浪子刀客": "icon-03",
+    "加班女仆": "icon-02",
+}
+common.sleep_default_with_msg("目前G分不太够，先不购买600G分的贤德昭仪。等G分超过1000的时候来弄下这个~")
+// locateItemAndTryBuyIt( "贤德昭仪", makeupMap)
+
+common.click("点击 [装饰] 按钮", 790, 390)
+decorationMap = {
+    "云裳童心饰": "icon-06",
+    "云裳茶壶": "icon-05",
+    "飞车酷比": "icon-01",
+    "飞车墨汁": "icon-02",
+    "炫舞粉66": "icon-03",
+    "炫舞酷66": "icon-04",
+    "小橘子": "icon-07",
+    "喷香猫粮": "icon-00",
+}
+locateItemAndTryBuyIt("小橘子", decorationMap)
+
+function locateItemAndTryBuyIt(targetName, nameToIconTextMap) {
+    iconText = nameToIconTextMap[targetName]
+    let notOwnText = className("android.view.View").text("未拥有").findOne()
+    let itemList = notOwnText.parent().parent().parent().child(1).child(0)
+    for (let i = 0; i < itemList.childCount(); i++) {
+        item = itemList.child(i)
+
+        let image_icon = item.child(item.childCount() - 2).child(0).text()
+        if (image_icon !== iconText) {
+            continue
+        }
+
+        item.click()
+        common.sleep_default_with_msg("已定位到【" + targetName + "】，并完成点击，等待一会确保状态显示完成")
+
+        let infoPanel = notOwnText.parent().parent().parent().parent().parent().child(1)
+        let buyButton = infoPanel.child(1)
+        if (buyButton.text() === "已拥有") {
+            common.sleep_default_with_msg("已经拥有 " + targetName + " ，本次不尝试购买")
+        } else {
+            common.sleep_default_with_msg("尚未拥有 " + targetName + " ，即将尝试进行购买")
+            common.click("点击购买 " + targetName, buyButton.bounds().centerX(), buyButton.bounds().centerY())
+            // common.click("点击 取消", 350,1250)
+            common.click("点击 确定", 735,1250)
+        }
+
+        // 找到目标后停止处理
+        break
+    }
+}
+
 common.back()
 
 common.headline("战斗与历练")
