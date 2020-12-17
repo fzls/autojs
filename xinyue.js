@@ -40,14 +40,28 @@ common.headline("理财礼卡已经下线，没必要搞了-。-")
 
 common.headline("游戏礼包")
 common.swipe("下滑直至[游戏礼包]内容完全展现", 540, 500, 540, 2100, 1000)
-common.click("点击 [游戏礼包] 区域", 200, 800)
-let exchangeFuHuoCoinButton = className("android.widget.TextView").textContains("复活币*5").findOne().parent().parent().child(2)
-let buttonY = exchangeFuHuoCoinButton.bounds().centerY()
-common.sleep_default_with_msg("复活币所在Y轴为" + buttonY)
 
-common.click("点击 [复活币*5] 右侧的兑换按钮", 930, buttonY)
-common.click("点击 [确认兑换] 按钮", 760, 1430)
-common.click("点击 [确认] 按钮", 550, 1360)
+// 获取一下最新G分数值，供后续逻辑使用
+let currentGPoints = parseInt(className("android.widget.TextView").id("new_integral_value_txt").findOne().text(), 10)
+common.sleep_default_with_msg("当前G分为" + currentGPoints)
+
+common.click("点击 [游戏礼包] 区域", 200, 800)
+
+// 只有在G分不低于600（妆容-贤德昭仪）+300（装饰-小橘子）+本次兑换所需G分时，才尝试进行本次的兑换
+let needLeftAtLeast = 600 + 300
+if (currentGPoints >= needLeftAtLeast + 44) {
+    let exchangeFuHuoCoinButton = className("android.widget.TextView").textContains("复活币*5").findOne().parent().parent().child(2)
+    let buttonY = exchangeFuHuoCoinButton.bounds().centerY()
+    common.sleep_default_with_msg("复活币所在Y轴为" + buttonY)
+
+    common.click("点击 [复活币*5] 右侧的兑换按钮", 930, buttonY)
+    common.click("点击 [确认兑换] 按钮", 760, 1430)
+    common.click("点击 [确认] 按钮", 550, 1360)
+    currentGPoints -= 44
+} else {
+    common.sleep_default_with_msg("当前G分为" + currentGPoints + "分，为了确保能购买心悦猫咪的妆容和装饰，当前应至少有" + (needLeftAtLeast + 44) + "分，故而不使用44G分兑换本次的复活币*5")
+}
+
 common.back()
 
 common.headline("心悦猫咪")
@@ -113,7 +127,7 @@ function locateItemAndTryBuyIt(targetName, nameToIconTextMap) {
             common.sleep_default_with_msg("尚未拥有 " + targetName + " ，即将尝试进行购买")
             common.click("点击购买 " + targetName, buyButton.bounds().centerX(), buyButton.bounds().centerY())
             // common.click("点击 取消", 350,1250)
-            common.click("点击 确定", 735,1250)
+            common.click("点击 确定", 735, 1250)
         }
 
         // 找到目标后停止处理
