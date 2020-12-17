@@ -20,15 +20,18 @@ let activityWidth = 350
 let secondActivityPosition = firstActivityXPosition + activityWidth
 let thirdActivityPosition = firstActivityXPosition + 2 * activityWidth
 let processedActivities = []
+let currentMyPoints = 0
 
 // 点击前三个活动
 let activityXPositions = [firstActivityXPosition, secondActivityPosition, thirdActivityPosition]
 for (let i = 0; i < activityXPositions.length; i++) {
+    currentMyPoints = parseInt(className("android.widget.TextView").id("tv_my_points").findOne().text(), 10)
     common.click("点击 第" + (i + 1) + "个 活动图标", activityXPositions[i], bannerY)
     doActivity()
 }
 // 点击后面几个活动。目前实际只有五个活动页面，为了保险起见，多处理俩
 for (let i = 4; i <= 7; i++) {
+    currentMyPoints = parseInt(className("android.widget.TextView").id("tv_my_points").findOne().text(), 10)
     common.swipe("向左滑动一个活动图标的距离，使下一个滑动滑动到当前最后一个活动的位置", thirdActivityPosition, bannerY, secondActivityPosition, bannerY, 1000)
     common.click("点击 第" + i + "个 活动图标", thirdActivityPosition, bannerY)
     doActivity()
@@ -36,6 +39,8 @@ for (let i = 4; i <= 7; i++) {
 
 // 统计一下处理的活动列表
 common.sleep_default_with_msg("本次共处理了以下活动： " + processedActivities)
+
+let tomorrowTreasureProcessed = false
 
 // 根据当前活动页面title，决定不同的处理方式
 function doActivity() {
@@ -50,10 +55,29 @@ function doActivity() {
         switch (title) {
             case "福利中心-限时兑换":
                 common.headline("限时兑换1-5Q币")
-                common.click("点击 [300积分兑换] 1Q币", 800, 725)
-                common.click("点击 [确定] 按钮", 540, 1320)
-                common.click("点击 [1500积分兑换] 5Q币", 800, 1120)
-                common.click("点击 [确定] 按钮", 540, 1320)
+                // 兑换完对应Q币，须确保剩余积分不少于这个数
+                needLeftAtLeast = 0
+                if (!tomorrowTreasureProcessed) {
+                    // 如果今天的明日宝藏尚未投资，则至少需要保留1000的积分
+                    needLeftAtLeast += 1000
+                }
+
+                // 首先尝试使用1500积分兑换5Q币
+                if (currentMyPoints >= needLeftAtLeast + 1500) {
+                    common.click("点击 [1500积分兑换] 5Q币", 800, 1120)
+                    common.click("点击 [确定] 按钮", 540, 1320)
+                    currentMyPoints -= 1500
+                } else {
+                    common.sleep_default_with_msg("当前积分为" + currentMyPoints + "分，为了确保能兑换明日宝藏，当前应至少有" + (needLeftAtLeast + 1500) + "分，故而不使用1500积分兑换本次的5Q币")
+                }
+                // 然后再尝试使用300积分兑换1Q币
+                if (currentMyPoints >= needLeftAtLeast + 300) {
+                    common.click("点击 [300积分兑换] 1Q币", 800, 725)
+                    common.click("点击 [确定] 按钮", 540, 1320)
+                    currentMyPoints -= 300
+                } else {
+                    common.sleep_default_with_msg("当前积分为" + currentMyPoints + "分，为了确保能兑换明日宝藏，当前应至少有" + (needLeftAtLeast + 300) + "分，故而不使用300积分兑换本次的1Q币")
+                }
                 break
 
             case "活动中心":
@@ -77,6 +101,8 @@ function doActivity() {
                 } else {
                     common.sleep_default_with_msg("当前积分为" + actualUseScore + "分，参与活动至少需要10分~")
                 }
+
+                tomorrowTreasureProcessed = true
                 break
 
             default:
