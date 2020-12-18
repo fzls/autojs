@@ -14,7 +14,18 @@ common.back_to_top("返回首页", 2, 3000)
 common.headline("阅读视频资讯")
 common.click("点击 [资讯] tab", 140, 2080)
 common.click("点击 [视频] 分页", 788, 244)
-common.click("点击 [第一条视频资讯评论按钮以进入详情页]", 821, 1300)
+
+let commentBtns = className("android.widget.TextView").id("info_coment_count").find()
+for (let i=0; i< commentBtns.length;i++) {
+    let commentBtn = commentBtns[i]
+    titleTextView = commentBtn.parent().parent().parent().parent().parent().child(0)
+    if (commentBtn.text() != "" && titleTextView.text() != "") {
+        commentBtn.click()
+        common.sleep_default_with_msg("点击 [某条视频资讯评论按钮以进入详情页]，视频标题为【" + titleTextView.text() + "】")
+        break
+    }
+}
+
 common.back_to_top("返回首页", 2, 3000)
 common.log("需要额外点击分页以回到最初分页，确保后续执行初始状态一直")
 common.click("点击 [作品] 分页", 50, 244)
