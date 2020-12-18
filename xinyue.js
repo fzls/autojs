@@ -96,8 +96,8 @@ decorationMap = {
     "云裳童心饰": "icon-06",
     "小橘子": "icon-07",
 }
-common.sleep_default_with_msg("目前G分不太够，先不购买300G分的小橘子。等俩月卡都买完再开启")
-// locateItemAndTryBuyIt("小橘子", decorationMap)
+// common.sleep_default_with_msg("目前G分不太够，先不购买300G分的小橘子。等俩月卡都买完再开启")
+locateItemAndTryBuyIt("小橘子", decorationMap)
 
 // 贤德昭仪的七日收益率较低，故而在后面买
 // 成本    600
@@ -128,8 +128,8 @@ makeupMap = {
     "节奏大师": "icon-22",
     "Carry猫": "icon-23",
 }
-common.sleep_default_with_msg("目前G分不太够，先不购买600G分的贤德昭仪。等俩月卡都买完再开启")
-// locateItemAndTryBuyIt( "贤德昭仪", makeupMap)
+// common.sleep_default_with_msg("目前G分不太够，先不购买600G分的贤德昭仪。等俩月卡都买完再开启")
+locateItemAndTryBuyIt( "贤德昭仪", makeupMap)
 
 function locateItemAndTryBuyIt(targetName, nameToIconTextMap) {
     iconText = nameToIconTextMap[targetName]
