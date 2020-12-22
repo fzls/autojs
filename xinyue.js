@@ -249,24 +249,29 @@ if (totalFightCount > 0) {
 common.headline("历练")
 if (fightingCapacity >= 15) {
     common.click("点击 [历练] 按钮", 170, 1725)
-    let levelPos = {x: 850, y: 1750}
+    let levelPos = {stage: 1, x: 850, y: 1750}
     if (15 <= fightingCapacity && fightingCapacity < 55) {
         // 关卡1
+        levelPos.stage = 1
         levelPos.x = 850
         levelPos.y = 1750
     } else if (55 <= fightingCapacity && fightingCapacity < 90) {
-        // 关卡1
+        // 关卡2
+        levelPos.stage = 2
         levelPos.x = 250
         levelPos.y = 1200
     } else if (15 <= fightingCapacity && fightingCapacity < 55) {
-        // 关卡1
+        // 关卡3
+        levelPos.stage = 3
         levelPos.x = 875
         levelPos.y = 900
     } else if (15 <= fightingCapacity && fightingCapacity < 55) {
-        // 关卡1
+        // 关卡4
+        levelPos.stage = 4
         levelPos.x = 500
         levelPos.y = 575
     }
+    common.click("当前战力为 " + fightingCapacity + ", 最高可打第" + levelPos.stage + "关")
     common.click("点击 [当前能打的最高关卡] 按钮", levelPos.x, levelPos.y)
     common.click("点击 [去吧] 按钮", 700, 1500)
 } else {
