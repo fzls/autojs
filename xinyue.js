@@ -271,7 +271,7 @@ if (fightingCapacity >= 15) {
         levelPos.x = 500
         levelPos.y = 575
     }
-    common.click("当前战力为 " + fightingCapacity + ", 最高可打第" + levelPos.stage + "关")
+    common.sleep_default_with_msg("当前战力为 " + fightingCapacity + ", 最高可打第" + levelPos.stage + "关")
     common.click("点击 [当前能打的最高关卡] 按钮", levelPos.x, levelPos.y)
     common.click("点击 [去吧] 按钮", 700, 1500)
 } else {
