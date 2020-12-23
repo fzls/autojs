@@ -6,7 +6,7 @@ let clickLeftTopBackButton = function (totalCount) {
     }
 }
 
-common.init("微信dnf签到活动自动化脚本")
+common.init("微信dnf公众号相关活动自动化脚本")
 
 common.launchPackage("打开微信", "com.tencent.mm")
 
@@ -15,14 +15,14 @@ clickLeftTopBackButton(5)
 common.click("点击 [微信] tab", 140, 2075)
 common.double_click("双击跳到最上方", 50, 135)
 
-common.headline("每日签到")
-common.click_text("点击 [文件传输助手] 对话框", "文件传输助手")
-common.click_text("点击 [签到页面] 聊天记录", "每日签到")
-// 为了保险起见，多点几次
-for (let i = 0; i < 3; i++) {
-    common.click("第" + i + "次点击 [签到] 按钮", 535, 1370)
-}
-clickLeftTopBackButton(2)
+// common.headline("每日签到")
+// common.click_text("点击 [文件传输助手] 对话框", "文件传输助手")
+// common.click_text("点击 [签到页面] 聊天记录", "每日签到")
+// // 为了保险起见，多点几次
+// for (let i = 0; i < 3; i++) {
+//     common.click("第" + i + "次点击 [签到] 按钮", 535, 1370)
+// }
+// clickLeftTopBackButton(2)
 
 common.headline("2020DNF嘉年华派送好礼")
 common.click_text("点击 [地下城与勇士] 对话框", "地下城与勇士")
