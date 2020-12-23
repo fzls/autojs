@@ -8,10 +8,14 @@ common.click("点击 [首页] tab以跳过开屏推送", 135, 2080)
 common.headline("进入福利中心进行自动签到")
 common.click("点击 [首页] tab", 135, 2080)
 common.click("点击 [福利中心] 图标", 1015, 130)
-common.sleep_default_with_msg("签到信息：" + id("tv_sign_result").findOne().text())
+
+let myWelfare = className("android.view.View").text("我的福利").findOne()
+let signResult = myWelfare.parent().child(myWelfare.indexInParent() + 1).child(0).child(1)
+common.sleep_default_with_msg("签到信息：" + signResult.text())
 
 // 获取banner view，进而获取y轴信息
-let bannerRecycleView = className("androidx.recyclerview.widget.RecyclerView").id("recyclerview_pm_banner").findOne()
+let hotActivities = className("android.view.View").text("热门活动").findOne()
+let bannerRecycleView = hotActivities.parent().child(hotActivities.indexInParent() + 1)
 let bannerY = bannerRecycleView.bounds().centerY()
 common.sleep_default_with_msg("活动页面图标的Y轴中心为 " + bannerY)
 
@@ -25,13 +29,13 @@ let currentMyPoints = 0
 // 点击前三个活动
 let activityXPositions = [firstActivityXPosition, secondActivityPosition, thirdActivityPosition]
 for (let i = 0; i < activityXPositions.length; i++) {
-    currentMyPoints = parseInt(className("android.widget.TextView").id("tv_my_points").findOne().text(), 10)
+    currentMyPoints = parseInt(myWelfare.parent().child(myWelfare.indexInParent() + 1).child(1).child(2).text(), 10)
     common.click("点击 第" + (i + 1) + "个 活动图标", activityXPositions[i], bannerY)
     doActivity()
 }
 // 点击后面几个活动。目前实际只有五个活动页面，为了保险起见，多处理俩
 for (let i = 4; i <= 7; i++) {
-    currentMyPoints = parseInt(className("android.widget.TextView").id("tv_my_points").findOne().text(), 10)
+    currentMyPoints = parseInt(myWelfare.parent().child(myWelfare.indexInParent() + 1).child(1).child(2).text(), 10)
     common.swipe("向左滑动一个活动图标的距离，使下一个滑动滑动到当前最后一个活动的位置", thirdActivityPosition, bannerY, secondActivityPosition, bannerY, 1000)
     common.click("点击 第" + i + "个 活动图标", thirdActivityPosition, bannerY)
     doActivity()
