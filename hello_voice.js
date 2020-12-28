@@ -19,12 +19,12 @@ common.sleep_default_with_msg("等待助手退出完毕")
 common.click("点击 登录DNF助手 右侧的 [领取]", 930, 2100)
 common.back_to_top("返回首页", 2, 3000)
 
-common.headline("进入活动界面")
-common.click("点击 [首页] Tab", 105, 2050)
-common.click("点击 [游戏] 分页", 78, 160)
-common.click_sleep_long("点击 [福利中心]", 310, 800)
-common.click("点击 [使用Hello贝]", 800, 670)
-
+// common.headline("进入活动界面")
+// common.click("点击 [首页] Tab", 105, 2050)
+// common.click("点击 [游戏] 分页", 78, 160)
+// common.click_sleep_long("点击 [福利中心]", 310, 800)
+// common.click("点击 [使用Hello贝]", 800, 670)
+//
 // common.headline("投票助力")
 // common.click_sleep_long("点击 [阿拉德勇士征集令]", 530, 1000)
 // common.click("点击 [投票助力领好礼]", 280, 1210)
