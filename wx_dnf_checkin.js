@@ -28,7 +28,7 @@ common.headline("2020DNF嘉年华派送好礼")
 common.click_text("点击 [地下城与勇士] 对话框", "地下城与勇士")
 common.click("点击 左下角的 [文字输入] 按钮", 66, 2080)
 // hack: 版本更新的时候需要调整这个id
-let inputArea = className("android.widget.EditText").id("al_").findOne()
+let inputArea = className("android.widget.EditText").id("iy0").findOne()
 inputArea.setText("盖楼")
 common.sleep_default_with_msg("输入 盖楼")
 common.click("点击 [发送] 按钮", 980, 2080)
