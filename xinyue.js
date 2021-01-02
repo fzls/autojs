@@ -251,31 +251,30 @@ if (totalFightCount > 0) {
 common.headline("历练")
 if (fightingCapacity >= 15) {
     common.click("点击 [历练] 按钮", 170, 1725)
-    let levelPos = {stage: 1, x: 850, y: 1750}
+    levels = [
+        {stage: 1, x: 850, y: 1750},
+        {stage: 2, x: 250, y: 1200},
+        {stage: 3, x: 875, y: 900},
+        {stage: 4, x: 500, y: 575},
+    ]
+    stage = 1
     if (15 <= fightingCapacity && fightingCapacity < 55) {
-        // 关卡1
-        levelPos.stage = 1
-        levelPos.x = 850
-        levelPos.y = 1750
+        stage = 1
     } else if (55 <= fightingCapacity && fightingCapacity < 90) {
-        // 关卡2
-        levelPos.stage = 2
-        levelPos.x = 250
-        levelPos.y = 1200
+        stage = 2
     } else if (90 <= fightingCapacity && fightingCapacity < 130) {
-        // 关卡3
-        levelPos.stage = 3
-        levelPos.x = 875
-        levelPos.y = 900
+        stage = 3
     } else if (130 <= fightingCapacity) {
-        // 关卡4
-        levelPos.stage = 4
-        levelPos.x = 500
-        levelPos.y = 575
+        stage = 4
     }
-    common.sleep_default_with_msg("当前战力为 " + fightingCapacity + ", 最高可打第" + levelPos.stage + "关")
-    common.click("点击 [当前能打的最高关卡] 按钮", levelPos.x, levelPos.y)
-    common.click("点击 [去吧] 按钮", 700, 1500)
+    common.sleep_default_with_msg("当前战力为 " + fightingCapacity + ", 最高可打第" + levelPos.stage + "关，将依次尝试该关一直到第二关，直到找到一个可以进行的关卡")
+    do {
+        let levelPos = levels[stage-1]
+        common.click("点击 [当前能打的最高关卡] 按钮", levelPos.x, levelPos.y)
+        common.click("点击 [去吧] 按钮 或 当该关卡无剩余次数时出现的 [好的] 按钮", 700, 1500)
+
+        stage-=1
+    }while (stage >= 2)
 } else {
     common.sleep_default_with_msg("战力不足15，无法进行历练~")
 }
