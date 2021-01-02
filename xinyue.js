@@ -262,12 +262,12 @@ if (fightingCapacity >= 15) {
         levelPos.stage = 2
         levelPos.x = 250
         levelPos.y = 1200
-    } else if (15 <= fightingCapacity && fightingCapacity < 55) {
+    } else if (90 <= fightingCapacity && fightingCapacity < 130) {
         // 关卡3
         levelPos.stage = 3
         levelPos.x = 875
         levelPos.y = 900
-    } else if (15 <= fightingCapacity && fightingCapacity < 55) {
+    } else if (130 <= fightingCapacity) {
         // 关卡4
         levelPos.stage = 4
         levelPos.x = 500
