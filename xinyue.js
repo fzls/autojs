@@ -269,7 +269,7 @@ if (fightingCapacity >= 15) {
     common.sleep_default_with_msg("当前战力为 " + fightingCapacity + ", 最高可打第" + stage + "关，将依次尝试该关一直到第二关，直到找到一个可以进行的关卡")
     do {
         let levelPos = levels[stage-1]
-        common.click("点击 [当前能打的最高关卡] 按钮", levelPos.x, levelPos.y)
+        common.click("点击 [当前第"+ levelPos.stage +"关] 按钮", levelPos.x, levelPos.y)
         common.click("点击 [去吧] 按钮 或 当该关卡无剩余次数时出现的 [好的] 按钮", 700, 1500)
 
         stage-=1
