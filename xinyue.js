@@ -271,6 +271,7 @@ if (fightingCapacity >= 15) {
         let levelPos = levels[stage-1]
         common.click("点击 [当前第"+ levelPos.stage +"关] 按钮", levelPos.x, levelPos.y)
         common.click("点击 [去吧] 按钮 或 当该关卡无剩余次数时出现的 [好的] 按钮", 700, 1500)
+        common.click("若提示关卡已经猫满为患，点击 [好的] 按钮", 700, 1320)
 
         stage-=1
     }while (stage >= 2)
