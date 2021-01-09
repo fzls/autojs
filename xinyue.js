@@ -17,29 +17,40 @@ common.click("点击 [确认] 按钮", 550, 1360)
 common.headline("赚G分")
 common.swipe("上滑直至[赚G分]内容完全展现", 540, 2100, 540, 150, 1000)
 
-common.headline("周礼包")
-// common.click("点击 [心悦周礼包] 区域", 400, 1900)
-common.click("点击 [心悦周礼包] 区域", 950, 1900)
-common.click("点击 [一键领取] 按钮", 900, 1615)
-common.click("点击 [X] 以关闭领取成功", 925, 875)
-common.click("点击 [X] 以关闭待领取通知", 925, 990)
-let remainingLotteryCount = parseInt(className("android.view.View").depth(9).findOne().text(), 10)
-common.sleep_default_with_msg("剩余免费抽奖次数为" + remainingLotteryCount + "次")
-for (let i = 0; i < remainingLotteryCount; i++) {
-    common.click("点击 [免费抽奖] 按钮", 540, 1375)
-    common.click("点击 [稍后查看] 按钮", 365, 1475)
-}
-common.back()
+xPositions = [400, 950]
+for (let i = 0; i < xPositions.length; i++) {
+    common.click("点击 [赚G分活动] 区域 x=" + xPositions[i], xPositions[i], 1900)
 
-common.headline("理财礼卡已经在小助手中实现，这里将直接跳过~")
-// common.headline("理财礼卡")
-// common.click("点击 [理财礼卡] 区域", 950, 1900)
-// common.swipe("上滑直至[四个礼包]内容居中", 540, 1600, 540, 1100, 1000)
-// common.click("点击 [600G分购买] 升级版月卡", 750, 1777)
-// common.click("点击 [确认购买] 升级版月卡", 350, 1250)
-// common.click("点击 [确认]", 550, 1435)
-// common.click("点击 [确认购买] 升级版月卡", 350, 1250)
-// common.click("点击 [确认]", 550, 1435)
+    let webview_title = className("android.widget.TextView").findOne().text()
+    switch (webview_title) {
+        case "心悦周礼包":
+            common.headline("周礼包")
+            common.click("点击 [一键领取] 按钮", 900, 1615)
+            common.click("点击 [X] 以关闭领取成功", 925, 875)
+            common.click("点击 [X] 以关闭待领取通知", 925, 990)
+            let remainingLotteryCount = parseInt(className("android.view.View").depth(9).findOne().text(), 10)
+            common.sleep_default_with_msg("剩余免费抽奖次数为" + remainingLotteryCount + "次")
+            for (let i = 0; i < remainingLotteryCount; i++) {
+                common.click("点击 [免费抽奖] 按钮", 540, 1375)
+                common.click("点击 [稍后查看] 按钮", 365, 1475)
+            }
+            break
+        case "理财礼卡":
+            common.headline("理财礼卡已经在小助手中实现，这里将直接跳过~")
+            // common.headline("理财礼卡")
+            // common.swipe("上滑直至[四个礼包]内容居中", 540, 1600, 540, 1100, 1000)
+            // common.click("点击 [600G分购买] 升级版月卡", 750, 1777)
+            // common.click("点击 [确认购买] 升级版月卡", 350, 1250)
+            // common.click("点击 [确认]", 550, 1435)
+            // common.click("点击 [确认购买] 升级版月卡", 350, 1250)
+            // common.click("点击 [确认]", 550, 1435)
+            break
+        default:
+            common.sleep_default_with_msg("未找到活动【" + webview_title + "】的处理函数")
+    }
+
+    common.back()
+}
 
 common.headline("游戏礼包")
 common.swipe("下滑直至[游戏礼包]内容完全展现", 540, 500, 540, 2100, 1000)
@@ -131,7 +142,7 @@ makeupMap = {
     "Carry猫": "icon-23",
 }
 // common.sleep_default_with_msg("目前G分不太够，先不购买600G分的贤德昭仪。等俩月卡都买完再开启")
-locateItemAndTryBuyIt( "贤德昭仪", makeupMap)
+locateItemAndTryBuyIt("贤德昭仪", makeupMap)
 
 function locateItemAndTryBuyIt(targetName, nameToIconTextMap) {
     iconText = nameToIconTextMap[targetName]
@@ -193,7 +204,7 @@ function locateItemAndTryUseIt(targetName, nameToIconTextMap) {
 
         // 已穿戴|穿戴
         // 已装饰|装饰
-        let statusBtn =item.child(1)
+        let statusBtn = item.child(1)
         let status = statusBtn.text()
         if (status === "穿戴" || status === "装饰") {
             // 点击穿戴/装饰
@@ -269,13 +280,13 @@ if (fightingCapacity >= 15) {
     }
     common.sleep_default_with_msg("当前战力为 " + fightingCapacity + ", 最高可打第" + stage + "关，将依次尝试该关一直到第二关，直到找到一个可以进行的关卡")
     do {
-        let levelPos = levels[stage-1]
-        common.click("点击 [第"+ levelPos.stage +"关] 按钮", levelPos.x, levelPos.y)
+        let levelPos = levels[stage - 1]
+        common.click("点击 [第" + levelPos.stage + "关] 按钮", levelPos.x, levelPos.y)
         common.click("点击 [去吧] 按钮 或 当该关卡无剩余次数时出现的 [好的] 按钮", 700, 1500)
         common.click("若提示关卡已经猫满为患，点击 [好的] 按钮", 700, 1320)
 
-        stage-=1
-    }while (stage >= 2)
+        stage -= 1
+    } while (stage >= 2)
 } else {
     common.sleep_default_with_msg("战力不足15，无法进行历练~")
 }
