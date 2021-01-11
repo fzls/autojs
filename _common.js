@@ -121,7 +121,7 @@ module.exports = {
 
     // 通用等待逻辑
     sleep: function (msg, seconds) {
-        this.log(msg)
+        this.log(msg + "(等待" + seconds + "秒)")
         sleep(seconds * 1000)
     },
     sleep_default: function () {
