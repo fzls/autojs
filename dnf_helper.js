@@ -1,4 +1,4 @@
-var common = require("_common.js")
+let common = require("_common.js")
 
 common.init("dnf助手排行榜活动自动化完成获取鲜花任务以及编年史相关任务脚本")
 

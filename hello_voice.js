@@ -1,4 +1,4 @@
-var common = require("_common.js")
+let common = require("_common.js")
 
 common.init("hello语音dnf活动自动化脚本")
 

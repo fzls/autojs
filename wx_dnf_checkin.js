@@ -1,4 +1,4 @@
-var common = require("_common.js")
+let common = require("_common.js")
 
 let clickLeftTopBackButton = function (totalCount) {
     for (let i = 0; i < totalCount; i++) {

@@ -1,4 +1,4 @@
-var common = require("_common.js")
+let common = require("_common.js")
 
 common.init("心悦app G分脚本")
 

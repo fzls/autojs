@@ -1,4 +1,4 @@
-var common = require("_common.js")
+let common = require("_common.js")
 
 common.init("掌上WeGame 每日签到与明日宝藏脚本")
 
