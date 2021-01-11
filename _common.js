@@ -17,7 +17,7 @@ module.exports = {
             this.swipe("下拉状态栏", 180, 200, 180, 1200, 300)
             this.click("点击时间", 250, 230)
         }
-        
+
         this.sleep_default_with_msg("即将开始运行 " + operationName)
     },
 
@@ -36,6 +36,28 @@ module.exports = {
         this.sleep_long()
         this.sleep("额外等待一会", 12)
     },
+    reLaunchPackage: function (msg, packageName) {
+        // 先尝试关闭应用
+        this.shutdownPackage(packageName)
+        // 然后重新打开
+        this.launchPackage(msg, packageName)
+    },
+    shutdownPackage: function (packageName) {
+        appName = app.getAppName(packageName)
+
+        app.openAppSetting(packageName)
+        this.sleep_default_with_msg("打开" + appName + "的设置界面")
+        text(appName).waitFor()
+
+        shuwdownBtn = text("结束运行").findOne()
+        if (shuwdownBtn.enabled()) {
+            this.click_text("点击 [结束运行] 按钮", "结束运行")
+            this.click_text("点击 [确定] 按钮", "确定")
+        } else {
+            this.sleep_default_with_msg(appName + "目前未在运行，不需要关闭")
+        }
+    },
+
     click: function (msg, x, y) {
         this.log(msg)
         click(x, y)
