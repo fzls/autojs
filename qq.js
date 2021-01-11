@@ -7,6 +7,7 @@ common.reLaunchPackage("重新打开QQ", "com.tencent.mobileqq")
 common.headline("预购活动每日免费抽奖")
 
 // QQ暂时没找到直接定位一个对话框的法子，换一个思路，改为从搜索栏入手
+common.sleep("重新打开QQ需要等待半分钟，等待必要内容加载完毕，否则搜索功能会没有结果", 30)
 let searchBar = className("android.widget.TextView").text("搜索").findOne()
 common.click("点击 [搜索] 框", searchBar.bounds().centerX(), searchBar.bounds().centerY())
 common.back()
