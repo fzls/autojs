@@ -14,7 +14,7 @@ common.back()
 
 let newSearchEdit = className("android.widget.EditText").text("搜索").findOne()
 newSearchEdit.setText("我的电脑")
-common.sleep("搜索 [我的电脑]，需要耗费一些时间，等待若干时间", 10)
+common.sleep("搜索 [我的电脑]，需要耗费一些时间，等待若干时间", 30)
 
 let myComputer = className("android.widget.TextView").text("我的电脑").findOne()
 common.click("点击 [我的电脑] 对话框", myComputer.bounds().centerX(), myComputer.bounds().centerY())
