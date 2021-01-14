@@ -29,7 +29,10 @@ common.swipe("2/2 上滑直至[抽奖界面]界面完全展现", 540, 2000, 540,
 // 为了保险起见，多点几次
 for (let i = 0; i < 3; i++) {
     common.click("第" + (i+1) + "次点击 [立即开奖] 按钮", 550, 1050)
+    common.sleep_default_with_msg("额外等待一会，确保抽奖动画完毕")
     common.click("第" + (i+1) + "次点击 [关闭奖励展示] 按钮", 990, 845)
 }
+
+common.back_to_top("跳回主界面", 3, 3000)
 
 common.foot()
