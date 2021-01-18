@@ -197,8 +197,13 @@ function locateItemAndTryUseIt(targetName, nameToIconTextMap) {
         item = itemList.child(i)
 
         let imageView = item.child(0)
-        let image_icon = imageView.child(imageView.childCount() - 1).child(0).text()
-        if (image_icon !== iconText) {
+        // 一般图标是最后一个子元素
+        let image_icon = imageView.child(imageView.childCount() - 1)
+        if (image_icon.childCount() === 0) {
+            // 有时候会是倒数第二个
+            image_icon = imageView.child(imageView.childCount() - 2)
+        }
+        if (image_icon.child(0).text() !== iconText) {
             continue
         }
 
