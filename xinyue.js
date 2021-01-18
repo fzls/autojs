@@ -216,6 +216,21 @@ function locateItemAndTryUseIt(targetName, nameToIconTextMap) {
             statusBtn.click()
             common.sleep_default_with_msg("尚未" + status + targetName + "，点击 " + status + " 按钮进行" + status)
 
+            let useBtnView = returnBtnView.parent().child(4).child(0).child(1).child(2)
+            common.click("点击" + status + targetName, useBtnView.bounds().centerX(), useBtnView.bounds().centerY())
+
+            let closeBtnView = useBtnView.parent().parent().child(0)
+            common.click(status + "完成，点击右上角关闭按钮", closeBtnView.bounds().centerX(), closeBtnView.bounds().centerY())
+        } else if (status === "到期续费"){
+            statusBtn.click()
+            common.sleep_default_with_msg(targetName + "已过期，点击 " + status + " 按钮进行续费")
+
+            let buyBtnView = returnBtnView.parent().child(4).child(0).child(1).child(2)
+            common.click("点击 续期按钮 续期" + targetName, buyBtnView.bounds().centerX(), buyBtnView.bounds().centerY())
+
+            common.click("点击 确定 进行购买", 735, 1250)
+
+            common.click("点击 好的", 540, 1320)
 
             let useBtnView = returnBtnView.parent().child(4).child(0).child(1).child(2)
             common.click("点击" + status + targetName, useBtnView.bounds().centerX(), useBtnView.bounds().centerY())
