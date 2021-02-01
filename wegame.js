@@ -92,7 +92,7 @@ function doActivity() {
                 common.click("点击 [我要参加] 按钮(有昨日宝箱)", 700, 1600)
                 common.click("点击 [空白处] 干掉输入框", 700, 1400)
                 // 通过我的积分来向上跳三层找到表格组件
-                formDialogView = className("android.widget.TextView").text("我的积分 ：").findOne().parent().parent().parent()
+                formDialogView = className("android.view.View").text("我的积分 ：").findOne().parent().parent().parent()
                 let currentScores = parseInt(formDialogView.child(0).child(1).child(1).text(), 10)
                 let actualUseScore = Math.min(currentScores, 1000)
                 common.sleep_default_with_msg("当前积分为：" + currentScores + "分")
