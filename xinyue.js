@@ -59,7 +59,7 @@ common.swipe("下滑直至[游戏礼包]内容完全展现", 540, 500, 540, 2100
 let currentGPoints = parseInt(className("android.widget.TextView").id("new_integral_value_txt").findOne().text(), 10)
 common.sleep_default_with_msg("当前G分为" + currentGPoints)
 
-common.click("点击 [游戏礼包] 区域", 200, 800)
+common.click_text("点击 [游戏礼包] 区域", "游戏礼包")
 // common.swipe("因为其他手游，dnf被刷到下面，需要滑动一下", 540, 1480, 540, 680, 1000)
 
 // 只有在G分不低于600（妆容-贤德昭仪）+300（装饰-小橘子）+600（理财礼卡-升级版月卡）+300（理财礼卡-体验版月卡）+本次兑换所需G分时，才尝试进行本次的兑换
