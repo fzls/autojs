@@ -15,7 +15,10 @@ common.click("点击 [立即签到] 按钮", 540, 475)
 common.click("点击 [确认] 按钮", 550, 1360)
 
 common.headline("赚G分")
-common.swipe("上滑直至[赚G分]内容完全展现", 540, 2100, 540, 150, 1000)
+// 为了保险起见，多滑动几次
+for (let i = 0; i < 2; i++) {
+    common.swipe("上滑直至[赚G分]内容完全展现", 540, 2100, 540, 150, 1000)
+}
 
 xPositions = [400, 950]
 for (let i = 0; i < xPositions.length; i++) {
@@ -53,7 +56,9 @@ for (let i = 0; i < xPositions.length; i++) {
 }
 
 common.headline("游戏礼包")
-common.swipe("下滑直至[游戏礼包]内容完全展现", 540, 500, 540, 2100, 1000)
+for (let i = 0; i < 2; i++) {
+    common.swipe("下滑直至[游戏礼包]内容完全展现", 540, 500, 540, 2100, 1000)
+}
 
 // 获取一下最新G分数值，供后续逻辑使用
 let currentGPoints = parseInt(className("android.widget.TextView").id("new_integral_value_txt").findOne().text(), 10)
