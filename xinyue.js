@@ -87,14 +87,14 @@ common.back()
 common.headline("心悦猫咪")
 
 common.headline("领取历练奖励")
-common.click("点击 [心悦猫咪] 区域", 525, 910)
+common.click_text("点击 [心悦猫咪] 区域", "心悦猫咪")
 common.sleep("加载很慢，多等一段时间", 25)
 common.click("点击 [领取礼包] 按钮", 170, 1725)
 common.click("点击 [好的] 按钮", 550, 1380)
 common.back()
 
 common.headline("尝试购买妆容和装饰")
-common.click("点击 [心悦猫咪] 区域", 525, 910)
+common.click_text("点击 [心悦猫咪] 区域", "心悦猫咪")
 common.sleep("加载很慢，多等一段时间", 25)
 common.click("点击 [商店] 按钮", 910, 1725)
 
@@ -183,7 +183,7 @@ function locateItemAndTryBuyIt(targetName, nameToIconTextMap) {
 common.back()
 
 common.headline("穿戴妆容和装饰")
-common.click("点击 [心悦猫咪] 区域", 525, 910)
+common.click_text("点击 [心悦猫咪] 区域", "心悦猫咪")
 common.sleep("加载很慢，多等一段时间", 25)
 common.click("点击 [仓库] 按钮", 990, 815)
 
@@ -259,7 +259,7 @@ function locateItemAndTryUseIt(targetName, nameToIconTextMap) {
 common.back()
 
 common.headline("战斗与历练")
-common.click("点击 [心悦猫咪] 区域", 525, 910)
+common.click_text("点击 [心悦猫咪] 区域", "心悦猫咪")
 common.sleep("加载很慢，多等一段时间", 25)
 let infoListView = className("android.widget.ListView").depth(11).rowCount(3).findOne()
 let gPoints = parseInt(infoListView.child(0).text(), 10)
