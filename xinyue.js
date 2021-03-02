@@ -318,6 +318,8 @@ if (enable_xinyue_cat) {
         common.sleep_default_with_msg("战力不足15，无法进行历练~")
     }
     common.back()
+} else {
+    common.sleep_default_with_msg("心悦猫咪在小助手中实现了，因此脚本内增加开关，并默认关闭心悦猫咪逻辑")
 }
 
 common.back()
