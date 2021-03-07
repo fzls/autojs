@@ -27,16 +27,17 @@ for (let i = 0; i < xPositions.length; i++) {
     let webview_title = className("android.widget.TextView").findOne().text()
     switch (webview_title) {
         case "心悦周礼包":
-            common.headline("周礼包")
-            common.click("点击 [一键领取] 按钮", 900, 1615)
-            common.click("点击 [X] 以关闭领取成功", 925, 875)
-            common.click("点击 [X] 以关闭待领取通知", 925, 990)
-            let remainingLotteryCount = parseInt(className("android.view.View").depth(9).findOne().text(), 10)
-            common.sleep_default_with_msg("剩余免费抽奖次数为" + remainingLotteryCount + "次")
-            for (let i = 0; i < remainingLotteryCount; i++) {
-                common.click("点击 [免费抽奖] 按钮", 540, 1375)
-                common.click("点击 [稍后查看] 按钮", 365, 1475)
-            }
+            common.headline("周礼包已经在小助手中实现，这里将直接跳过~")
+            // common.headline("周礼包")
+            // common.click("点击 [一键领取] 按钮", 900, 1615)
+            // common.click("点击 [X] 以关闭领取成功", 925, 875)
+            // common.click("点击 [X] 以关闭待领取通知", 925, 990)
+            // let remainingLotteryCount = parseInt(className("android.view.View").depth(9).findOne().text(), 10)
+            // common.sleep_default_with_msg("剩余免费抽奖次数为" + remainingLotteryCount + "次")
+            // for (let i = 0; i < remainingLotteryCount; i++) {
+            //     common.click("点击 [免费抽奖] 按钮", 540, 1375)
+            //     common.click("点击 [稍后查看] 按钮", 365, 1475)
+            // }
             break
         case "理财礼卡":
             common.headline("理财礼卡已经在小助手中实现，这里将直接跳过~")
