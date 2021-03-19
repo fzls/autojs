@@ -24,20 +24,36 @@ common.double_click("双击跳到最上方", 50, 135)
 // }
 // clickLeftTopBackButton(2)
 
-common.headline("2020DNF嘉年华派送好礼")
+common.headline("微信答题")
 common.click_text("点击 [地下城与勇士] 对话框", "地下城与勇士")
-common.click("点击 左下角的 [文字输入] 按钮", 66, 2080)
+let switchToTextInputBtn = className("android.widget.ImageView").desc("消息").findOne()
+common.click("点击 左下角的 [文字输入] 按钮", switchToTextInputBtn.bounds().centerX(), switchToTextInputBtn.bounds().centerY())
 // hack: 版本更新的时候需要调整这个id
-let inputArea = className("android.widget.EditText").id("iy1").findOne()
-inputArea.setText("盖楼")
-common.sleep_default_with_msg("输入 盖楼")
-common.click("点击 [发送] 按钮", 980, 2080)
+let inputArea = className("android.widget.ImageView").desc("服务按钮").findOne() // 左下角按钮 ImageView
+    .parent().parent() // 最下方tab容器 LinearLayout
+    .child(1) // 除左下角按钮外的右侧控件的容器 LinearLayout
+    .child(1) // 中间控件容器 LinearLayout
+    .child(0) // ScrollView
+    .child(0) // LinearLayout
+    .child(0) // FrameLayout
+    .child(0) // EditText
+
+let possibleAnswers = ["dta", "dtb", "dtc", "dtd"]
+for (let idx = 0; idx < possibleAnswers.length; idx++) {
+    answer = possibleAnswers[idx]
+
+    inputArea.setText(answer)
+    common.sleep_default_with_msg("输入 " + answer)
+
+    let sendBtn = className("android.widget.Button").text("发送").findOne()
+    common.click("点击 [发送] 按钮", sendBtn.bounds().centerX(), sendBtn.bounds().centerY())
+}
 common.back()
 common.click_text("点击 [文件传输助手] 对话框", "文件传输助手")
-common.click_text("点击 [领取奖励] 聊天记录", "领取奖励")
+common.click_text("点击 [抽奖] 聊天记录", "抽奖")
 // 为了保险起见，多点几次
-for (let i = 0; i < 3; i++) {
-    common.click("第" + i + "次点击 [领取奖励] 按钮", 535, 1570)
+for (let i = 1; i <= 3; i++) {
+    common.click("第" + i + "次点击 [抽奖] 按钮", 545, 1770)
     common.click("第" + i + "次点击 [确定] 按钮", 400, 1235)
 }
 clickLeftTopBackButton(2)
