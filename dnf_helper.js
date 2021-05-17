@@ -41,7 +41,7 @@ common.click("点击 [动态] tab", 400, 2080)
 common.click("点击 [第一条动态的发送者头像] 以进入其主页", 95, 1050)
 common.click("点击 [加好友] 关注他", 1000, 345)
 common.click("点击 [...] 打开选项框", 1013, 138)
-common.click("点击 [删除好友] 取消关注", 540, 1838)
+common.click_text("点击 [删除好友] 取消关注", "删除好友")
 common.back_to_top("返回首页", 2, 3000)
 
 common.headline("分享周报")
