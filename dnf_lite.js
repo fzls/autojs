@@ -1,3 +1,4 @@
+// by 泡@842155114
 let common = require("_common.js")
 
 common.init("dnf助手 Lite")
