@@ -29,7 +29,7 @@ function main(){
 }
 
 function start(){
-    var flag = false
+    var flag = true
     common.click("点击 [地下城]", 500, 1850)
     var sences = ["继续挑战","进入阿拉德","进入天界"]
     for (sence of sences) {
@@ -39,8 +39,8 @@ function start(){
             if(text("挑战地下城").exists()){
                 break
             }
-            flag = true
             challenge()
+            flag = false
         }
     }
     common.click("点击 [关闭]", device.width*0.5, device.height*0.86)
@@ -75,8 +75,10 @@ function freeLottery(){
     for (let item of free) {
         item.parent().child(0).click()
         sleep(3000)
-        common.click("点击 [空白处]", device.width*0.8, device.height*0.4)
-        sleep(1000)
+        while(text("获得道具").exists()||text("获得角色").exists()||text("获得武器").exists()){
+            common.click("点击 [空白处]", device.width*0.8, device.height*0.4)
+            sleep(1000)
+        }
     }
 }
 
@@ -84,9 +86,9 @@ function payLottery(){
     common.click("点击 [抽十次]", device.width*0.72, device.height*0.68)
     // 判断是否还有金币抽奖
     sleep(3000)
-    if(!text("获得道具").exists())
+    if(!(text("获得道具").exists()||text("获得角色").exists()||text("获得武器").exists()))
         return false
-    for (let i = 0; i < 10; i++) {
+    while(text("获得道具").exists()||text("获得角色").exists()||text("获得武器").exists()){
         common.click("点击 [空白处]", device.width*0.8, device.height*0.4)
         sleep(1000)
     }
