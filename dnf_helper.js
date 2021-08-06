@@ -2,8 +2,7 @@ let common = require("_common.js")
 
 common.init("dnf助手排行榜活动自动化完成获取鲜花任务以及编年史相关任务脚本")
 
-common.launchPackage("打开助手app并等待一段时间", "com.tencent.gamehelper.dnf")
-common.back_to_top("按多次back，确保跳到最顶层", 5, 3000)
+common.reLaunchPackage("重新打开 助手app", "com.tencent.gamehelper.dnf")
 
 common.headline("阅读资讯")
 common.click("点击 [资讯] tab", 140, 2080)
