@@ -15,7 +15,7 @@ module.exports = {
             device.wakeUp()
             sleep(1000)
             this.swipe("下拉状态栏", 180, 75, 180, 1200, 300)
-            this.click("点击时间", 250, 230)
+            this.click("点击时间", 150, 170)
         }
 
         this.sleep_default_with_msg("即将开始运行 " + operationName)
