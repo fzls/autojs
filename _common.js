@@ -56,6 +56,7 @@ module.exports = {
         } else {
             this.sleep_default_with_msg(appName + "目前未在运行，不需要关闭")
         }
+        this.back()
     },
 
     click: function (msg, x, y) {
