@@ -43,21 +43,22 @@ common.click("点击 [...] 打开选项框", 1013, 138)
 common.click_text("点击 [删除好友] 取消关注", "删除好友")
 common.back_to_top("返回首页", 2, 3000)
 
-common.headline("分享周报")
-common.click("点击 [三横杠] 进入左侧栏", 67, 140)
-common.click_text("点击 [新周报-体验版] 进入周报", "新周报-体验版")
-common.sleep_default_with_msg("额外等待一会")
-common.swipe("下滑到第4页", 540, 600, 540, 1600, 1000)
-common.click_text("点击 [立即分享]", "立即分享")
-common.click("点击 [QQ好友]", 620, 1818)
-common.sleep_default_with_msg("等待几秒后，直接返回即可，无需实际分享")
-common.back()
-// common.click_text("点击 [小号群]", "小号群")
-// common.click("点击 [发送]", 745, 1580)
-// common.click("点击 [返回DNF助手]", 340, 1205)
-for (let i = 1; i <= 6; i++) {
-    common.click("第" + i + "次点击 [空白处] 以避免多次分享的bug", 725, 1100)
-}
-common.back_to_top("返回首页", 2, 3000)
+// 周报似乎已经被移除了，暂时先不用处理了
+// common.headline("分享周报")
+// common.click("点击 [三横杠] 进入左侧栏", 67, 140)
+// common.click_text("点击 [新周报-体验版] 进入周报", "新周报-体验版")
+// common.sleep_default_with_msg("额外等待一会")
+// common.swipe("下滑到第4页", 540, 600, 540, 1600, 1000)
+// common.click_text("点击 [立即分享]", "立即分享")
+// common.click("点击 [QQ好友]", 620, 1818)
+// common.sleep_default_with_msg("等待几秒后，直接返回即可，无需实际分享")
+// common.back()
+// // common.click_text("点击 [小号群]", "小号群")
+// // common.click("点击 [发送]", 745, 1580)
+// // common.click("点击 [返回DNF助手]", 340, 1205)
+// for (let i = 1; i <= 6; i++) {
+//     common.click("第" + i + "次点击 [空白处] 以避免多次分享的bug", 725, 1100)
+// }
+// common.back_to_top("返回首页", 2, 3000)
 
 common.foot()
