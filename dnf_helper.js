@@ -1,6 +1,6 @@
 let common = require("_common.js")
 
-common.init("dnf助手排行榜活动自动化完成获取鲜花任务以及编年史相关任务脚本")
+common.init("dnf助手自动完成编年史相关任务脚本")
 
 common.reLaunchPackage("重新打开 助手app", "com.tencent.gamehelper.dnf")
 
