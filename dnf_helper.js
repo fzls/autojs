@@ -44,6 +44,7 @@ common.click_text("点击 [删除好友] 取消关注", "删除好友")
 common.back_to_top("返回首页", 2, 3000)
 
 common.headline("分享周报")
+common.click("点击 [资讯] tab", 140, 2080)
 common.click("点击 [赛丽亚房间] 图标", 870, 942)
 common.click("点击 [周报] 图标", 985, 760)
 common.sleep_default_with_msg("额外等待一会")
