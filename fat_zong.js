@@ -3,7 +3,7 @@ let common = require("_common.js")
 common.log("肥腙大战魔界小脚本")
 
 skill_x_list = [250, 560, 880, 1200]
-skill_y = 2738
+skill_y = 2625
 wait_seconds = 0.5
 
 while (true) {
